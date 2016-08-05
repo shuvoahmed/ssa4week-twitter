@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;com.iron.yard.twitter.clone.HelloJetty.java&apos; to &apos;TwitterClone.java&apos;&#x0D;&#x0A;- Original project: &apos;twitterclone&apos;&#x0D;&#x0A;- Original element: &apos;com.iron.yard.twitter.clone.HelloJetty.java&apos;&#x0D;&#x0A;- Renamed element: &apos;com.iron.yard.twitter.clone.TwitterClone.java&apos;" description="Rename compilation unit &apos;HelloJetty.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;com.iron.yard.twitter.clone{HelloJetty.java" name="TwitterClone.java" references="false" stamp="1470405818840" version="1.0"/>
+</session>
