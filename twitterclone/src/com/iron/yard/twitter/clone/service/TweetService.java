@@ -10,6 +10,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONObject;
+
 import com.iron.yard.twitter.clone.Tweet;
 import com.iron.yard.twitter.clone.db.DBConnection;
 
@@ -23,10 +25,27 @@ public class TweetService
 	{
 		
 		TweetService tweetService = new TweetService();
-		List<Tweet> userTweets = tweetService.getUserTweets("shuvo");
-		List<Tweet> topTweets = tweetService.getTopTenTweets();
+		//List<Tweet> userTweets = tweetService.getUserTweets("shuvo");
+		//List<Tweet> topTweets = tweetService.getTopTenTweets();
+		System.out.println(tweetService.getTopTenTweetsJSON());
+		System.out.println(tweetService.getUserTweetsJSON("shuvo"));
 	}
 	
+	public List<JSONObject> getTopTenTweetsJSON()
+	{
+		List<JSONObject> tweetsJSON = new ArrayList<JSONObject>();
+		JSONObject jsonObject = null;
+		
+		List<Tweet> tweets = getTopTenTweets();
+		for(Tweet t : tweets)
+		{
+			jsonObject = new JSONObject(t);
+			tweetsJSON.add(jsonObject);
+		}
+		
+		return tweetsJSON;
+	}
+
 	public List<Tweet> getTopTenTweets()
 	{
 	    List<Tweet> tweets = new ArrayList<Tweet>();
@@ -51,11 +70,11 @@ public class TweetService
 	         
 	         tweets.add(tweet);
 	         
-	         System.out.println( "USERID = " + tweet.getUserID());
-	         System.out.println( "TWEET = " + tweet.getTweet());
-	         System.out.println( "DATE = " + tweet.getDate());
+	         //System.out.println( "USERID = " + tweet.getUserID());
+	         //System.out.println( "TWEET = " + tweet.getTweet());
+	         //System.out.println( "DATE = " + tweet.getDate());
 	
-	         System.out.println();
+	         //System.out.println();
 	      }
 	      rs.close();
 	      stmt.close();
@@ -67,6 +86,21 @@ public class TweetService
 	    System.out.println("Retrieved Top Ten Tweets");
 
 		return tweets;
+	}
+	
+	public List<JSONObject> getUserTweetsJSON(String userID)
+	{
+		List<JSONObject> tweetsJSON = new ArrayList<JSONObject>();
+		JSONObject jsonObject = null;
+		
+		List<Tweet> tweets = getUserTweets(userID);
+		for(Tweet t : tweets)
+		{
+			jsonObject = new JSONObject(t);
+			tweetsJSON.add(jsonObject);
+		}
+		
+		return tweetsJSON;
 	}
 	
 	public List<Tweet> getUserTweets(String userID)
@@ -94,11 +128,11 @@ public class TweetService
 	         
 	         tweets.add(tweet);
 	         
-	         System.out.println( "USERID = " + tweet.getUserID());
-	         System.out.println( "TWEET = " + tweet.getTweet());
-	         System.out.println( "DATE = " + tweet.getDate());
+	         //System.out.println( "USERID = " + tweet.getUserID());
+	         //System.out.println( "TWEET = " + tweet.getTweet());
+	         //System.out.println( "DATE = " + tweet.getDate());
 	
-	         System.out.println();
+	         //System.out.println();
 	      }
 	      rs.close();
 	      stmt.close();
